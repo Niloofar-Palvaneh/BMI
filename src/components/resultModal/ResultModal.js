@@ -7,13 +7,13 @@ export default function ResultModal({ result  , setShowResult }) {
         if (result < 19) {
             setBmiResult("کمبود وزن")
             setBmiColor("bg-yellow-300")
-        } else if (result > 19 && result < 25) {
+        } else if (result >= 19 && result < 25) {
             setBmiResult("وزن سلامت")
             setBmiColor("bg-green-300")
-        } else if (result > 25 && result < 30) {
+        } else if (result >= 25 && result < 30) {
             setBmiResult("اضافه وزن")
             setBmiColor("bg-red-300")
-        } else if (result > 30) {
+        } else if (result >= 30) {
             setBmiResult("چاقی")
             setBmiColor("bg-red-600")
         }

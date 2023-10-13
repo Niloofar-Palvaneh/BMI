@@ -1,21 +1,30 @@
+import ResultModal from "@/components/resultModal/ResultModal"
 import Title from "@/components/title/Title"
 import { useState } from "react"
 
 export default function Home() {
   const [height, setHeight] = useState(null)
   const [weight, setWeight] = useState(null)
+  const [showResult, setShowResult] = useState(false)
+  const [result, setResult] = useState(null)
+
   const setHeightHandler = (e) => {
     setHeight(e.target.value)
   }
   const setWeightHandler = (e) => {
     setWeight(e.target.value)
   }
-  const submit = ()=>{
-    console.log("ok");
+  const submit = () => {
+    setShowResult(true)
+    const heightresult = (height / 100) * (height / 100)
+    setResult(Math.floor(weight / heightresult) )
   }
 
   return (
     <>
+      {
+        showResult && <ResultModal result={result} setShowResult={setShowResult} />
+      }
       <div className="w-full h-screen flex items-center justify-center bg-blue-200">
         <div className="w-[400px] p-4 bg-white rounded-xl">
           <h1 className="text-3xl font-bold text-center text-gray-700 mb-12">
@@ -54,8 +63,8 @@ export default function Home() {
             </div>
           </div>
           <button
-          onClick={submit}
-          className="bg-blue-600 text-white p-2 text-center mt-6 border border-blue-700 w-full">
+            onClick={submit}
+            className="bg-blue-600 text-white p-2 text-center mt-6 border border-blue-700 w-full">
             submit
           </button>
         </div>
